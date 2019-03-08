@@ -8,12 +8,19 @@ import { SongService } from './song.service';
 })
 export class SongsComponent implements OnInit {
 
-  public songs:Array<Object>=null;
-
+  public songs:Array<any>=null;
+  public song:string=null;
+  
   constructor(private songService:SongService) { }
 
   ngOnInit() {
     this.songs=this.songService.getSongs();
+  }
+
+  getSongs(){
+    this.songService.searchSong(this.song).then(response=>{
+      this.songs=response;
+    })
   }
 
 }

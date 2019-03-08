@@ -1,13 +1,34 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+
+type Track={
+artist:string,
+name:string,
+url:string
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
 
-  public songs: Array<Object>=null;
+  public songs: Array<Track>=null;
+  private API_KEY='fb818c9e3dc9667e082d7cc53b98c4ca';
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  searchSong(song){
+    
+   const API_URL=`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${song}&api_key=${this.API_KEY}&format=json`;
+   
+    return this.http.get(API_URL)
+    .pipe(
+      map(response => response['results'].trackmatches.track)
+    ).toPromise();
+    
+  }
 
   getSongs(){
 
@@ -18,3 +39,4 @@ export class SongService {
   }];
   }
 }
+
