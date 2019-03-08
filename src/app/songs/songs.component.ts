@@ -19,6 +19,7 @@ export class SongsComponent implements OnInit {
 
   getSongs(){
     this.songService.searchSong(this.song).then(response=>{
+      
       this.songs=response;
     })
   }
