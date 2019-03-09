@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 
 type Track={
@@ -15,13 +16,16 @@ url:string
 export class SongService {
 
   public songs: Array<Track>=null;
-  private API_KEY='fb818c9e3dc9667e082d7cc53b98c4ca';
+  
+  private API_KEY = environment.API_KEY;
+  private API_URL = environment.API_URL;
+
 
   constructor(private http:HttpClient) { }
 
   searchSong(song){
     
-   const API_URL=`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${song}&api_key=${this.API_KEY}&format=json`;
+   const API_URL=`${this.API_URL}method=track.search&track=${song}&api_key=${this.API_KEY}&format=json`;
    
     return this.http.get(API_URL)
     .pipe(

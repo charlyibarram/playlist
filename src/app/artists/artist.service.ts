@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
+
 type Response={
   results:{
     artistmatches:{
@@ -20,13 +22,16 @@ type Artist={
 @Injectable({
   providedIn: 'root'
 })
+
 export class ArtistService {
-  private API_KEY='fb818c9e3dc9667e082d7cc53b98c4ca';
+  private API_KEY = environment.API_KEY;
+  private API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) { }
 
   searchArtist(artist){
-    const URL=`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${artist}&api_key=${this.API_KEY}&format=json`;
+    const URL=`${this.API_URL}method=artist.search&artist=${artist}&api_key=${this.API_KEY}&format=json`;
+                                
     return this.http
     .get<Response>(URL)
     .pipe(
