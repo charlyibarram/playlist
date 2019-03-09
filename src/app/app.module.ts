@@ -11,6 +11,8 @@ import {FormsModule} from '@angular/forms';
 import {routing} from './app.routing';
 import { ArtistsComponent } from './artists/artists.component';
 import {ArtistService} from './artists/artist.service';
+import { ArtistDetailsComponent } from './artists/artist-details/artist-details.component';
+import { AlbumsComponent } from './artists/albums/albums.component';
 
 
 
@@ -18,7 +20,9 @@ import {ArtistService} from './artists/artist.service';
   declarations: [
     AppComponent,
     SongsComponent,
-    ArtistsComponent
+    ArtistsComponent,
+    ArtistDetailsComponent,
+    AlbumsComponent
   ],
   imports: [
     BrowserModule,

@@ -38,4 +38,11 @@ export class ArtistService {
 
 
   }
+
+  getDetails(artist){
+    const URL=`http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=${artist}&api_key=${this.API_KEY}&format=json`;
+    return this.http
+    .get<Response>(URL)
+    .toPromise();
+  }
 }
