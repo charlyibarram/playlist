@@ -1,12 +1,14 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  
-</div>
 
-<a routerLink="">Buscar Artistas</a> | <a routerLink="songs">Buscar Canciones</a>
-    <router-outlet></router-outlet>
-
-
+<div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Buscar por:</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item" routerLink="">Artistas</button>
+            <button class="dropdown-item" routerLink="songs">Canciones</button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>

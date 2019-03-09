@@ -2,10 +2,14 @@
 <form (submit)="getArtists()">
   <input type="text" name="artist" [(ngModel)]="artist">
    
-  <button (click)="getArtists()">Buscar artista</button>
+  <button (click)="getArtists()" class="btn btn-primary">Buscar artista</button>
 </form>
 <ul>
   <li *ngFor="let artist of artists">
     <a routerLink="artist/{{artist.name}}">{{artist.name}}</a>
   </li>
 </ul>
+
+
+
+

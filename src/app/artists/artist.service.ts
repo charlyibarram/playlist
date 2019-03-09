@@ -22,7 +22,6 @@ type Artist={
 @Injectable({
   providedIn: 'root'
 })
-
 export class ArtistService {
   private API_KEY = environment.API_KEY;
   private API_URL = environment.API_URL;

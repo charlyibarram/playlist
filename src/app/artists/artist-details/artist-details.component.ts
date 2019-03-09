@@ -8,7 +8,11 @@ type Response = {
 };
 
 type Artist = {
-
+  image: Array<string>,
+  bio:{
+    summary: string,
+    content: string
+  }
 }
 
 @Component({
@@ -28,7 +32,7 @@ export class ArtistDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
@@ -43,8 +47,8 @@ export class ArtistDetailsComponent implements OnInit, OnDestroy {
   getArtist(artist) {
     this.artistService
       .getDetails(artist)
-        .then((response: Response) => {
-          this.artist = response.artist;
+        .then((response) =>{
+          this.artist = response['artist'];
         });
   }
 
